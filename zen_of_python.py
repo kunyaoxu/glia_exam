@@ -26,15 +26,13 @@ class TodoHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
         page = requests.get('http://wiki.python.org.tw/The%20Zen%20Of%20Python').text
-        print(page.encode(encoding="utf-8", errors="strict"))
+#        print(page.encode(encoding="utf-8", errors="strict"))
 #        quote_page = 'http://wiki.python.org.tw/The%20Zen%20Of%20Python'
 #        page = urllib2.urlopen(quote_page)
         soup = BeautifulSoup(page, 'lxml')
 #        name_box = soup.find('p', 'line874')
         name_box = soup.find_all('p', 'line874')
-
-        print("哈123")
-        print(soup.original_encoding)
+#        print(soup.original_encoding)
         print len(name_box)
         index = random.randrange(0, len(name_box))
         self.wfile.write(name_box[index].text.encode(encoding="utf-8", errors="strict"))
