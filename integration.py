@@ -8,7 +8,7 @@ def integrate(fun, start, end):
     area = 0
     while intercept < end:
         intercept += step
-        area += anonymous(intercept)*step
+        area += fun(intercept)*step
     return area
 
 
